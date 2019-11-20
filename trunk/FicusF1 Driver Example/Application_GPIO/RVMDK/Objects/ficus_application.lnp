@@ -1,0 +1,10 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\stm32fxxx_it.o"
+"..\VTLIB\ficus_f1_dll.lib"
+".\objects\startup_stm32f10x_cl.o"
+".\objects\system_stm32f10x.o"
+--library_type=microlib --strict --scatter ".\Objects\ficus_application.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\ficus_application.map" -o .\Objects\ficus_application.axf

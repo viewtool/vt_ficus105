@@ -1,0 +1,11 @@
+.\objects\main.o: ..\USER\main.c
+.\objects\main.o: E:\1.Program_Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\USER\stm32f10x_conf.h
+.\objects\main.o: E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\stm32f10x.h
+.\objects\main.o: .\RTE\_Flash\RTE_Components.h
+.\objects\main.o: ..\CMSIS\Include\core_cm3.h
+.\objects\main.o: E:\1.Program_Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: ..\CMSIS\Include\core_cmInstr.h
+.\objects\main.o: ..\CMSIS\Include\core_cmFunc.h
+.\objects\main.o: E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\system_stm32f10x.h
+.\objects\main.o: ..\USER\SPI\vt_spi.h

@@ -1,0 +1,25 @@
+Dependencies for Project 'ficus_application', Target 'Flash': (DO NOT MODIFY !)
+F (..\USER\main.c)(0x5DAECE88)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I ..\CMSIS\Include -I ..\USER\SPI -I ..\USER-I.\RTE\_Flash-IE:\1.Program_Software\Keil_v5\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IE:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F10X_CL-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (E:\1.Program_Software\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599FA01C)
+I (..\USER\stm32f10x_conf.h)(0x5DA12A69)
+I (E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\stm32f10x.h)(0x53BA0D60)
+I (.\RTE\_Flash\RTE_Components.h)(0x5DA1327F)
+I (..\CMSIS\Include\core_cm3.h)(0x5CCC6FD2)
+I (E:\1.Program_Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599FA01E)
+I (..\CMSIS\Include\core_cmInstr.h)(0x5CCC6FD2)
+I (..\CMSIS\Include\core_cmFunc.h)(0x5CCC6FD2)
+I (E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\system_stm32f10x.h)(0x4F1E2E3C)
+I (..\USER\SPI\vt_spi.h)(0x5D8EB4CD)
+F (..\USER\stm32fxxx_it.c)(0x5DAEC94E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I ..\CMSIS\Include -I ..\USER\SPI -I ..\USER-I.\RTE\_Flash-IE:\1.Program_Software\Keil_v5\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IE:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F10X_CL-o .\objects\stm32fxxx_it.o --omf_browse .\objects\stm32fxxx_it.crf --depend .\objects\stm32fxxx_it.d)
+I (..\USER\stm32fxxx_it.h)(0x5D4A3349)
+I (E:\1.Program_Software\Keil_v5\ARM\ARMCC\include\string.h)(0x599FA01C)
+F (..\VTLIB\ficus_f1_dll.lib)(0x5DAEC16E)()
+F (..\CMSIS\Device\ST\STM32F10x\Source\Templates\system_stm32f10x.c)(0x5DAECDB0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I ..\CMSIS\Include -I ..\USER\SPI -I ..\USER-I.\RTE\_Flash-IE:\1.Program_Software\Keil_v5\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IE:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F10X_CL-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+I (E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\stm32f10x.h)(0x53BA0D60)
+I (.\RTE\_Flash\RTE_Components.h)(0x5DA1327F)
+I (..\CMSIS\Include\core_cm3.h)(0x5CCC6FD2)
+I (E:\1.Program_Software\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599FA01E)
+I (..\CMSIS\Include\core_cmInstr.h)(0x5CCC6FD2)
+I (..\CMSIS\Include\core_cmFunc.h)(0x5CCC6FD2)
+I (E:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include\system_stm32f10x.h)(0x4F1E2E3C)
+F (..\CMSIS\Device\ST\STM32F10x\Source\Templates\arm\startup_stm32f10x_cl.s)(0x5CCC6FD0)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Flash-IE:\1.Program_Software\Keil_v5\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IE:\1.Program_Software\Keil_v5\Arm\Packs\Keil\STM32F1xx_DFP\2.0.0\Device\Include--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32F10X_CL SETA 1"--list .\listings\startup_stm32f10x_cl.lst --xref -o .\objects\startup_stm32f10x_cl.o --depend .\objects\startup_stm32f10x_cl.d)
