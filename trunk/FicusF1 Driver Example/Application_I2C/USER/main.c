@@ -36,7 +36,7 @@
 #endif
 
 
-static char I2C_Index = 1;
+static char I2C_Index = 0;
 int main(int argc, char* argv[])
 {
 	int ret,i;
@@ -92,30 +92,40 @@ int main(int argc, char* argv[])
     {
         write_buffer[i] = i;
     }
-    ret = VII_WriteBytes(VII_USBI2C, 0,I2C_Index, 0xA0, 0x00, write_buffer, 8);
-    if (ret != ERR_SUCCESS)
+    int count = 0;
+    while(1)
     {
-        printf("Write data error!\r\n");
-        return ret;
+        if(count++ > 0xFFFF)
+        {
+            break;
+        }
+        ret = VII_WriteBytes(VII_USBI2C, 0,I2C_Index, 0xA0, 0x00, write_buffer, 8);
+        if (ret != ERR_SUCCESS)
+        {
+            printf("Write data error!\r\n");
+            return ret;
+        }
+        //Delay
+        Sleep(10);
+        //Read 8 byte data from 0x00
+        ret = VII_ReadBytes(VII_USBI2C, 0, I2C_Index, 0xA0, 0x00, read_buffer, 8);
+        if (ret != ERR_SUCCESS)
+        {
+            printf("Read data error!\r\n");
+            return ret;
+        }
+        else
+        {
+            printf("%d:",count);
+            printf("Read Data:\r\n");
+            for(i=0;i<8;i++)
+            {
+                printf("%02X ",read_buffer[i]);
+            }
+            printf("\r\n");
+        }
     }
-    //Delay
-    Sleep(100);
-	//Read 8 byte data from 0x00
-    ret = VII_ReadBytes(VII_USBI2C, 0, I2C_Index, 0xA0, 0x00, read_buffer, 8);
-    if (ret != ERR_SUCCESS)
-    {
-        printf("Read data error!\r\n");
-        return ret;
-    }
-	else
-	{
-		printf("Read Data:\r\n");
-		for(i=0;i<8;i++)
-		{
-			printf("%02X ",read_buffer[i]);
-		}
-		printf("\r\n");
-	}
+
     
 	return 0;
 }
