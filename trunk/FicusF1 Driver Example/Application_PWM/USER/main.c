@@ -1,28 +1,18 @@
   /*
   ******************************************************************************
-  * @file     : USB_PWM_Test.cpp
+  * @file     : Ficus_PWM_Test.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/29 10:40
-  * @brief    : USB_PWM_Test demo
+  * @Revision : Ver 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_PWM_Test demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-  /*
-  PWM_Channel0: GPIO_PortA_Pin0
-  PWM_Channel1: GPIO_PortA_Pin1
-  PWM_Channel2: GPIO_PortA_Pin2
-  PWM_Channel3: GPIO_PortA_Pin3
-  PWM_Channel4: GPIO_PortA_Pin6
-  PWM_Channel5: GPIO_PortA_Pin7
-  PWM_Channel6: GPIO_PortB_Pin8
-  PWM_Channel7: GPIO_PortB_Pin9
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -36,10 +26,6 @@
 int main(int argc, char* argv[])
 {
     int ret;
-	// Adjust PWM_CH0 clock frequency
-	uint32_t Frequency[8] = {0};
-    // Adjust PWM_CH2 duty ratio
-	uint8_t Pulse[8] = {0};	
 	VPI_INIT_CONFIG PWM_Config;
     // Scan connected device 
     ret = VPI_ScanDevice(1);
@@ -78,7 +64,6 @@ int main(int argc, char* argv[])
     Sleep(1000);
     // Stop PWM_CH0 channel
     ret = VPI_StopPWM(VPI_USBPWM, 0, VPI_PWM_CH0);
-	
     if (ret != ERR_SUCCESS)
     {
         printf("Stop pwm error!\n");
@@ -105,15 +90,17 @@ int main(int argc, char* argv[])
     }
     // Run 1S
     Sleep(1000);
+    // Adjust PWM_CH0 clock frequency
+	uint32_t Frequency[8] = {0};
     Frequency[0] = 50000;
     ret = VPI_SetPWMPeriod(VPI_USBPWM, 0, VPI_PWM_CH0, Frequency);
-	
     if (ret != ERR_SUCCESS)
     {
         printf("Set frequency error!\n");
         return ret;
     }
-
+    // Adjust PWM_CH2 duty ratio
+	uint8_t Pulse[8] = {0};
     Pulse[2] = 80;
     ret = VPI_SetPWMPulse(VPI_USBPWM, 0, VPI_PWM_CH2, Pulse);
     if (ret != ERR_SUCCESS)
@@ -143,7 +130,6 @@ int main(int argc, char* argv[])
         printf("Close device error!\n");
         return ret;
     }
-    while(1);
 	return 0;
 }
 

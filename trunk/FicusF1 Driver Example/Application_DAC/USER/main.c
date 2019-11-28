@@ -1,23 +1,18 @@
   /*
   ******************************************************************************
-  * @file     : USB_DAC_Test.cpp
+  * @file     : Ficus_DAC_Test.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/29 9:23
-  * @brief    : USB_ADC_Test demo
+  * @Revision : Ver 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_DAC_Test demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-  /*
-  DAC Channel 
-  Channel 0 GPIO_PortA_4
-  Channel 1 GPIO_PortA_5
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -122,7 +117,7 @@ int main(int argc, char* argv[])
         return ret;
     }else
     {
-        printf("DAC Channel 0 and 1 Start Output 3000MV");
+        printf("DAC Channel 0 and 1 Start Output 3000MV\r\n");
     }
 	ret = VAO_Stop(VAO_USBDAC, 0,VAO_DAC_CH0 | VAO_DAC_CH1);
     if (ret != ERR_SUCCESS)

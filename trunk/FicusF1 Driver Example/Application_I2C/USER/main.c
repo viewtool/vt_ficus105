@@ -1,31 +1,18 @@
   /*
   ******************************************************************************
-  * @file     : USB_I2C_AT24C02.cpp
+  * @file     : Ficus_I2C_AT24C02.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/19 10:42
-  * @brief    : USB_I2C_AT24C02 demo
+  * @Revision : Ver 1.0
+  * @Date     : 2020/10/23
+  * @brief    : Ficus_I2C_AT24C02 demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-
-  /*
-  Hardware Connection  (This is for your reference only)
-  AT24C02        Ginkgo USB-I2C Adapter
-  1.A0      <-->  GND(Pin19/Pin20)
-  2.A1	    <-->  GND(Pin19/Pin20)
-  3.A2      <-->  GND(Pin19/Pin20)
-  4.GND     <-->  GND(Pin19/Pin20)
-  5.SDA	    <-->  HI2C_SDA0(Pin8)
-  6.SCL	    <-->  HI2C_SCL0 (Pin6)
-  7.WP	    <-->  GND(Pin19/Pin20)
-  8.VCC	    <-->  VCC(Pin1/Pin2)
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -35,8 +22,6 @@
 #include "vt_i2c.h"
 #endif
 
-
-static char I2C_Index = 0;
 int main(int argc, char* argv[])
 {
 	int ret,i;
@@ -44,6 +29,7 @@ int main(int argc, char* argv[])
 	VII_BOARD_INFO BoardInfo;
 	uint8_t write_buffer[8]={0};
 	uint8_t	read_buffer[8]={0};
+    int8_t I2C_Index = 0;
 	//Scan device
 	ret = VII_ScanDevice(1);
 	if(ret <= 0)
@@ -58,8 +44,6 @@ int main(int argc, char* argv[])
         printf("Open device error!\r\n");
         return ret;
     }
-    
-
 	//Get product information
 	ret = VII_ReadBoardInfo(0,&BoardInfo);
     if (ret != ERR_SUCCESS){
@@ -92,40 +76,30 @@ int main(int argc, char* argv[])
     {
         write_buffer[i] = i;
     }
-    int count = 0;
-    while(1)
+    ret = VII_WriteBytes(VII_USBI2C, 0,I2C_Index, 0xA0, 0x00, write_buffer, 8);
+    if (ret != ERR_SUCCESS)
     {
-        if(count++ > 0xFFFF)
-        {
-            break;
-        }
-        ret = VII_WriteBytes(VII_USBI2C, 0,I2C_Index, 0xA0, 0x00, write_buffer, 8);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Write data error!\r\n");
-            return ret;
-        }
-        //Delay
-        Sleep(10);
-        //Read 8 byte data from 0x00
-        ret = VII_ReadBytes(VII_USBI2C, 0, I2C_Index, 0xA0, 0x00, read_buffer, 8);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Read data error!\r\n");
-            return ret;
-        }
-        else
-        {
-            printf("%d:",count);
-            printf("Read Data:\r\n");
-            for(i=0;i<8;i++)
-            {
-                printf("%02X ",read_buffer[i]);
-            }
-            printf("\r\n");
-        }
+        printf("Write data error!\r\n");
+        return ret;
     }
-
+    //Delay
+    Sleep(100);
+	//Read 8 byte data from 0x00
+    ret = VII_ReadBytes(VII_USBI2C, 0, I2C_Index, 0xA0, 0x00, read_buffer, 8);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Read data error!\r\n");
+        return ret;
+    }
+	else
+	{
+		printf("Read Data:\r\n");
+		for(i=0;i<8;i++)
+		{
+			printf("%02X ",read_buffer[i]);
+		}
+		printf("\r\n");
+	}
     
 	return 0;
 }

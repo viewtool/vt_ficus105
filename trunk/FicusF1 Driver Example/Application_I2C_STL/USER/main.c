@@ -1,41 +1,19 @@
   /*
   ******************************************************************************
-  * @file     : USB_I2C_AT24C02_SCTL.cpp
+  * @file     : Ficus_I2C_AT24C02_SCTL.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/19 11:00
-  * @brief    : USB_I2C_AT24C02_SCTL demo
+  * @Revision : Vers 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_I2C_AT24C02_SC19 demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
   */
-
-  /*
-  Software Connection  (This is for your reference only)
-  AT24C02        Ginkgo USB-I2C Adapter
-  I2C_SCL0  GPIO_PortB_Pin5
-  I2C_SDA0  GPIO_PortB_Pin6
-  I2C_SCL1  GPIO_PortB_Pin7
-  I2C_SDA1  GPIO_PortB_Pin8
-  I2C_SCL2  GPIO_PortB_Pin9
-  I2C_SDA2  GPIO_PortB_Pin10
-  I2C_SCL3  GPIO_PortB_Pin11
-  I2C_SDA3  GPIO_PortB_Pin12
-  I2C_SCL4  GPIO_PortA_Pin0
-  I2C_SDA4  GPIO_PortA_Pin1
-  I2C_SCL5  GPIO_PortA_Pin2
-  I2C_SDA5  GPIO_PortA_Pin3
-  I2C_SCL6  GPIO_PortA_Pin4
-  I2C_SDA6  GPIO_PortA_Pin5
-  I2C_SCL7  GPIO_PortA_Pin6
-  I2C_SDA7  GPIO_PortA_Pin7
-  */
-
 #ifdef WINAPI
 #include "stdafx.h"
 #include "ControlI2C.h"
@@ -46,7 +24,7 @@
 int main(int argc, char* argv[])
 {
 	int ret = 0,i;
-    uint8_t I2C_Index = 7;
+    uint8_t I2C_Index = 0;
 	VII_INIT_CONFIG I2C_Config;
 	VII_TIME_CONFIG I2C_TimeConfig;
 	uint8_t write_buffer[8]={0};
@@ -119,7 +97,7 @@ int main(int argc, char* argv[])
 			printf("%02X ",read_buffer[i]);
 		}	
 		printf("\r\n");
-		Sleep(1);
+//		Sleep(1);
 	}
 	return 0;
 }

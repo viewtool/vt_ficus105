@@ -1,22 +1,18 @@
   /*
   ******************************************************************************
-  * @file     : USB_GPIO_Test.cpp
+  * @file     : Ficus_GPIO_Test.cpp
   * @Copyright: ViewTool 
   * @Revision : ver 1.0
-  * @Date     : 2014/12/19 11:53
-  * @brief    : USB_GPIO_Test demo
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_GPIO_Test demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-  /*
-    GPIO_PortA Channel 0 - 15 
-    
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -28,7 +24,6 @@
 #endif
 int main(int argc, char* argv[])
 {
-	// Get GPIO_4 and GPIO_5 status 
     uint16_t pin_value = 0;
     int ret;
     // Scan connected device
@@ -45,35 +40,36 @@ int main(int argc, char* argv[])
         printf("Open device error!\r\n");
         return ret;
     }
-    // Set GPIO_7 and GPIO_8 to output 
-    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PIN7 | VGI_GPIO_PIN8);
+    // Set GPIOA_0 and GPIOA_1 to output 
+    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN0 | VGI_GPIO_PIN1);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin output error!\r\n");
         return ret;
     }
-    // Set GPIO_7 and GPIO_8 
-    ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PIN7 | VGI_GPIO_PIN8);
+    // Set GPIOA_0 and GPIOA_1 
+    ret = VGI_SetPins(VGI_USBGPIO, 0,  VGI_GPIO_PORTA | VGI_GPIO_PIN0 | VGI_GPIO_PIN1);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin high error!\r\n");
         return ret;
     }
-    // Reset GPIO_7 and GPIO_8 
-    ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PIN7 | VGI_GPIO_PIN8);
+    // Reset GPIOA_0 and GPIOA_1 
+    ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN0 | VGI_GPIO_PIN1);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin low error!\r\n");
         return ret;
     }
-    // Set GPIO_4 and GPIO_5 to input 
-    ret = VGI_SetInput(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
+    // Set GPIOA_4 and GPIOA_5 to input 
+    ret = VGI_SetInput(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin input error!\r\n");
         return ret;
     }
-    ret = VGI_ReadDatas(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5, &pin_value);
+	// Read GPIOA_4 and GPIOA_5 Data 
+    ret = VGI_ReadDatas(VGI_USBGPIO, 0,VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5, &pin_value);
     if (ret != ERR_SUCCESS)
     {
         printf("Get pin data error!\r\n");
@@ -83,44 +79,41 @@ int main(int argc, char* argv[])
     {
         if ((pin_value & VGI_GPIO_PIN4) != 0)
         {
-            printf("GPIO_4 is high-level!\r\n");
+            printf("GPIOA_4 is high-level!\r\n");
         }
         else
         {
-            printf("GPIO_4 is low-level!\r\n");
+            printf("GPIOA_4 is low-level!\r\n");
         }
         if ((pin_value & VGI_GPIO_PIN5) != 0)
         {
-            printf("GPIO_5 is high-level!\r\n");
+            printf("GPIOA_5 is high-level!\r\n");
         }
         else
         {
-            printf("GPIO_5 is low-level!\r\n");
+            printf("GPIOA_5 is low-level!\r\n");
         }
     }
-    //将GPIO_4和GPIO_5引脚设置成开漏模式（需加上拉电阻，可当双向口）
-    ret = VGI_SetOpenDrain(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
+    ret = VGI_SetOpenDrain(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin open drain error!\r\n");
         return ret;
     }
-    //将GPIO_4和GPIO_5输出高电平
-    ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
+	
+    ret = VGI_SetPins(VGI_USBGPIO, 0,VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin high error!\r\n");
         return ret;
     }
-    //将GPIO_4和GPIO_5输出低电平
-    ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
+    ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin high error!\r\n");
         return ret;
     }
-    //获取GPIO_4和GPIO_5引脚状态
-    ret = VGI_ReadDatas(VGI_USBGPIO, 0, VGI_GPIO_PIN4 | VGI_GPIO_PIN5, &pin_value);
+    ret = VGI_ReadDatas(VGI_USBGPIO, 0,VGI_GPIO_PORTA | VGI_GPIO_PIN4 | VGI_GPIO_PIN5, &pin_value);
     if (ret != ERR_SUCCESS)
     {
         printf("Get pin data error!\r\n");
@@ -130,22 +123,22 @@ int main(int argc, char* argv[])
     {
         if ((pin_value & VGI_GPIO_PIN4) != 0)
         {
-            printf("GPIO_4 is high-level!\r\n");
+            printf("GPIOA_4 is high-level!\r\n");
         }
         else
         {
-            printf("GPIO_4 is low-level!\r\n");
+            printf("GPIOA_4 is low-level!\r\n");
         }
         if ((pin_value & VGI_GPIO_PIN5) != 0)
         {
-            printf("GPIO_5 is high-level!\r\n");
+            printf("GPIOA_5 is high-level!\r\n");
         }
         else
         {
-            printf("GPIO_5 is low-level!\r\n");
+            printf("GPIOA_5 is low-level!\r\n");
         }
     }
-    //关闭设备
+    //Close Device 
     ret = VGI_CloseDevice(VGI_USBGPIO, 0);
     if (ret != ERR_SUCCESS)
     {

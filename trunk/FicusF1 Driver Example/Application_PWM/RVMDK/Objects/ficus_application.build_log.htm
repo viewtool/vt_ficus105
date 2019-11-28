@@ -21,17 +21,22 @@ Target DLL:      Segger\JL2CM3.dll V2.99.35.0
 Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
-F:\ficus_f1\FicusF1 Driver Example\Application_PWM\RVMDK\ficus_application.uvprojx
-Project File Date:  10/22/2019
+F:\VT_PUBLIC\vt_ficus105\trunk\FicusF1 Driver Example\Application_PWM\RVMDK\ficus_application.uvprojx
+Project File Date:  11/28/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\1.Program_Software\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Flash'
+Rebuild target 'Flash'
+assembling startup_stm32f10x_cl.s...
 compiling stm32fxxx_it.c...
+compiling main.c...
+..\USER\main.c(64): warning:  #223-D: function "Sleep" declared implicitly
+      Sleep(1000);
+..\USER\main.c: 1 warning, 0 errors
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=2068 RO-data=368 RW-data=28 ZI-data=2052  
-".\Objects\ficus_application.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=2108 RO-data=368 RW-data=24 ZI-data=2048  
+".\Objects\ficus_application.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +59,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

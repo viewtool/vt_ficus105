@@ -1,10 +1,10 @@
   /*
   ******************************************************************************
-  * @file     : USB_GPIO_Test.cpp
+  * @file     : Ficus_LED_Test.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/19 11:53
-  * @brief    : USB_GPIO_Test demo
+  * @Revision : Ver 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_LED_Test demo
   ******************************************************************************
   * @attention
   *
@@ -13,10 +13,6 @@
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-  /*
-    GPIO_PortA Channel 0 - 15 
-    
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -44,13 +40,13 @@ int main(int argc, char* argv[])
         printf("Open device error!\r\n");
         return ret;
     } 
-    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PORT1 | VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
+    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PORTA| VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin output error!\r\n");
         return ret;
     }
-    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PORT2 | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
+    ret = VGI_SetOutput(VGI_USBGPIO, 0, VGI_GPIO_PORTB | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
     if (ret != ERR_SUCCESS)
     {
         printf("Set pin output error!\r\n");
@@ -59,7 +55,7 @@ int main(int argc, char* argv[])
     while(1)
     {
         // Set GPIO_7 and GPIO_8 
-        ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PORT1 | VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
+        ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
         if (ret != ERR_SUCCESS)
         {
             printf("Set pin high error!\r\n");
@@ -67,7 +63,7 @@ int main(int argc, char* argv[])
         }else{
             printf("Set pin high LED\r\n");
         }
-        ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PORT2 | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
+        ret = VGI_SetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTB | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
         if (ret != ERR_SUCCESS)
         {
             printf("Set pin high error!\r\n");
@@ -75,9 +71,9 @@ int main(int argc, char* argv[])
         }else{
             printf("Set pin high LED\r\n");
         }        
-        Sleep(100);
+        Sleep(1000);
         // Reset GPIO_7 and GPIO_8 
-        ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORT1 | VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
+        ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTA | VGI_GPIO_PIN6 | VGI_GPIO_PIN7);
         if (ret != ERR_SUCCESS)
         {
             printf("Set pin low error!\r\n");
@@ -85,7 +81,7 @@ int main(int argc, char* argv[])
         }else{
             printf("Set pin low LED\r\n");
         }
-        ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORT2 | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
+        ret = VGI_ResetPins(VGI_USBGPIO, 0, VGI_GPIO_PORTB | VGI_GPIO_PIN12 | VGI_GPIO_PIN13);
         if (ret != ERR_SUCCESS)
         {
             printf("Set pin low error!\r\n");
@@ -93,9 +89,8 @@ int main(int argc, char* argv[])
         }else{
             printf("Set pin low LED\r\n");
         }
-        Sleep(100);
+        Sleep(1000);
     }
-    //πÿ±’…Ë±∏
     ret = VGI_CloseDevice(VGI_USBGPIO, 0);
     if (ret != ERR_SUCCESS)
     {

@@ -8,11 +8,11 @@
 #define VGI_USBGPIO			(1)	
 
 
-#define VGI_GPIO_PORT1      (1<<16)
-#define VGI_GPIO_PORT2      (1<<17)
-#define VGI_GPIO_PORT3      (1<<18)
-#define VGI_GPIO_PORT4      (1<<19)
-#define VGI_GPIO_PORT5      (1<<20)
+#define VGI_GPIO_PORTA      (1<<16)
+#define VGI_GPIO_PORTB      (1<<17)
+#define VGI_GPIO_PORTC      (1<<18)
+#define VGI_GPIO_PORTD      (1<<19)
+#define VGI_GPIO_PORTE      (1<<20)
 // Define GPIO pin
 #define	VGI_GPIO_PIN0		(1<<0)	//GPIO_0
 #define	VGI_GPIO_PIN1		(1<<1)	//GPIO_1

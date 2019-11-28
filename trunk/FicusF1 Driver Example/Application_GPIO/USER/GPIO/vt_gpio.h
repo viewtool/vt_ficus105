@@ -7,6 +7,11 @@
 // The adapter type definition
 #define VGI_USBGPIO			(1)	
 
+#define VGI_GPIO_PORTA      (1<<16)
+#define VGI_GPIO_PORTB      (1<<17)
+#define VGI_GPIO_PORTC      (1<<18)
+#define VGI_GPIO_PORTD      (1<<19)
+#define VGI_GPIO_PORTE      (1<<20)
 // Define GPIO pin
 #define	VGI_GPIO_PIN0		(1<<0)	//GPIO_0
 #define	VGI_GPIO_PIN1		(1<<1)	//GPIO_1
@@ -95,17 +100,18 @@ int fputc(int ch, FILE *f)
 	return ch;
 }
 #endif
+
 extern int32_t  VGI_ScanDevice(uint8_t NeedInit);
 extern int32_t  VGI_OpenDevice(int32_t DevType,int32_t DevIndex,int32_t Reserved);
 extern int32_t  VGI_CloseDevice(int32_t DevType,int32_t DevIndex);
-extern int32_t  VGI_InitGPIO(int32_t DevType, int32_t DevIndex, uint16_t PinMask, uint32_t PinMode);
-extern int32_t  VGI_WriteDatas(int32_t DevType,int32_t DevIndex, uint16_t PinMask,uint16_t Data);
-extern int32_t  VGI_ReadDatas(int32_t DevType,int32_t DevIndex,uint16_t PinMask,uint16_t *pData);
-extern int32_t	 VGI_SetPins(int32_t DevType,int32_t DevIndex,uint16_t PinMask);
-extern int32_t	 VGI_ResetPins(int32_t DevType,int32_t DevIndex,uint16_t PinMask);
-extern int32_t	 VGI_SetInput(int32_t DevType,int32_t DevIndex,uint16_t PinMask);
-extern int32_t	 VGI_SetOutput(int32_t DevType,int32_t DevIndex,uint16_t PinMask);
-extern int32_t	 VGI_SetOpenDrain(int32_t DevType,int32_t DevIndex,uint16_t PinMask);
+extern int32_t  VGI_InitGPIO(int32_t DevType, int32_t DevIndex, uint32_t PinMask, uint32_t PinMode);
+extern int32_t  VGI_WriteDatas(int32_t DevType,int32_t DevIndex, uint32_t PinMask,uint16_t Data);
+extern int32_t  VGI_ReadDatas(int32_t DevType,int32_t DevIndex,uint32_t PinMask,uint16_t *pData);
+extern int32_t	 VGI_SetPins(int32_t DevType,int32_t DevIndex,uint32_t PinMask);
+extern int32_t	 VGI_ResetPins(int32_t DevType,int32_t DevIndex,uint32_t PinMask);
+extern int32_t	 VGI_SetInput(int32_t DevType,int32_t DevIndex,uint32_t PinMask);
+extern int32_t	 VGI_SetOutput(int32_t DevType,int32_t DevIndex,uint32_t PinMask);
+extern int32_t	 VGI_SetOpenDrain(int32_t DevType,int32_t DevIndex,uint32_t PinMask);
 
 #endif
 

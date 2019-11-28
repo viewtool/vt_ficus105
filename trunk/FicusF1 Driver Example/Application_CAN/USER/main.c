@@ -1,15 +1,14 @@
-
-  /*
+/*
   ******************************************************************************
-  * @file     : CANTest.cpp
+  * @file     : Ficus_CAN_Test.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2018/12/26 9:27
-  * @brief    : CANTest demo
+  * @Revision : Ver 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_CAN_Test demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2019, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
@@ -28,8 +27,6 @@
 #include <stdlib.h>
 #include "stm32f10x_conf.h"
 #include "vt_can.h"
-
-
 #endif
 
 #define VT_LOG    				1
@@ -43,35 +40,35 @@
 
 #define CAN_DATA_SEND_FRAME_COUNT 10
 /*
-Used for Hardware (CLK=36MHz):
+Used for Hardware (CLK=42MHz):
 
 */
 CAN_BaudRate  CAN_BaudRateInitTab[]= {     
-{1000,1,2,1,9},       // 1M (1000K)
-{900,1,5,2,5},       // 900K
-{800,1,10,4,3},       // 800K
-{666,1,7,1,6},       // 666K
-{600,1,3,1,12},       // 600K
-{500,1,4,1,12},       // 500K
-{400,1,7,1,10},       // 400K
-{300,1,6,1,15},      // 300K
-{250,1,6,1,18},      // 250K
-{225,1,6,1,20},      // 225K
-{200,1,15,2,10},      // 200K
-{160,1,12,2,15},      // 160K
-{150,1,6,1,30},      // 150K
-{144,1,3,1,50},      // 144K
-{125,1,6,1,36},     // 125K
-{120,1,12,2,20},     // 120K
-{100,1,6,1,45},      // 100K
-{90,1,6,1,50},     // 90K
-{80,1,4,1,75},     // 80K
-{75,1,6,1,60},      // 75K
-{60,1,6,1,75},      // 60K
-{50,1,6,1,90},      // 50K
-{40,1,7,1,100},      // 40K
-{30,1,6,1,150},     // 30K
-{20,1,6,1,225},     // 20K
+{1000,1,2,4,6},       // 1M (1000K)
+{900,1,16,6,2},       // 900K
+{800,1,5,7,4},       // 800K
+{666,1,12,8,3},       // 666K
+{600,1,5,4,7},       // 600K
+{500,1,7,6,6},       // 500K
+{400,1,7,7,7},       // 400K
+{300,1,8,5,10},      // 300K
+{250,1,8,5,12},      // 250K
+{225,1,13,3,11},      // 225K
+{200,1,5,8,15},      // 200K
+{160,1,9,1,24},      // 160K
+{150,1,6,3,28},      // 150K
+{144,1,7,2,29},      // 144K
+{125,1,4,3,42},     // 125K
+{120,1,3,3,50},     // 120K
+{100,1,6,5,35},      // 100K
+{90,1,4,7,39},     // 90K
+{80,1,16,4,25},     // 80K
+{75,1,8,1,56},      // 75K
+{60,1,5,1,100},      // 60K
+{50,1,6,1,105},      // 50K
+{40,1,7,2,105},      // 40K
+{30,1,11,2,100},     // 30K
+{20,1,9,2,175},     // 20K
 };
 
 /*
@@ -103,14 +100,16 @@ int SetBaudRate(int baudrate, VCI_INIT_CONFIG_EX *config_ex)
 }
 
 #if CAN_CALLBACK_READ_DATA
-//VCI_RegisterReceiveCallback(0,GetDataCallback);
 void  GetDataCallback(uint32_t DevIndex,uint32_t CANIndex,uint32_t Len)
 {
 	int ReadDataNum;
-	int DataNum = VCI_GetReceiveNum(VCI_USBCAN2, 0, CANIndex);
+	static int data_num = 0;
+	data_num++;
+	printf("data_num = %d\n\n", data_num);
+	int DataNum = VCI_GetReceiveNum(VCI_USBCAN2, 0, 0);
 	VCI_CAN_OBJ	*pCAN_ReceiveData = (VCI_CAN_OBJ *)malloc(DataNum*sizeof(VCI_CAN_OBJ));
     if((DataNum > 0)&&(pCAN_ReceiveData != NULL)){
-        ReadDataNum = VCI_Receive(VCI_USBCAN2, 0, CANIndex, pCAN_ReceiveData, DataNum,100);
+        ReadDataNum = VCI_Receive(VCI_USBCAN2, 0, CANIndex, pCAN_ReceiveData, DataNum,0);
         for (int i = 0; i < ReadDataNum; i++)
         {
 			SPRINTF(("\n"));
@@ -147,7 +146,7 @@ int main(void)
     //Get board info
 #if CAN_GET_BOARD_INFO
 	VCI_BOARD_INFO_EX CAN_BoardInfo;
-    Status = VCI_ReadBoardInfoEx(devIndex, &CAN_BoardInfo);
+    Status = VCI_ReadBoardInfoEx(0,&CAN_BoardInfo);//It will open device
     if(Status==STATUS_ERR){
         SPRINTF(("Get board info failed!\n"));
         return 0;
@@ -177,13 +176,13 @@ int main(void)
     CAN_InitEx.CAN_Mode = 0;
 #endif
 	// set baudrate = 500Khz
-	SetBaudRate(500, &CAN_InitEx); 
+	SetBaudRate(1000, &CAN_InitEx); 
     CAN_InitEx.CAN_NART = 1;
     CAN_InitEx.CAN_RFLM = 0;
     CAN_InitEx.CAN_TXFP = 1;
 	CAN_InitEx.CAN_RELAY = 0;
 	devIndex = 0; 
-//	for(canIndex=0; canIndex<=1; canIndex++)
+	for(canIndex=0; canIndex<=1; canIndex++)
 	{
     Status = VCI_InitCANEx(VCI_USBCAN2,devIndex,canIndex,&CAN_InitEx);
 #if VT_LOG
@@ -203,7 +202,8 @@ int main(void)
             SPRINTF(("CANConfig.CAN_SJW: %d\n ",CAN_InitEx.CAN_SJW));
             SPRINTF(("CANConfig.CAN_TXFP: %d\n ",CAN_InitEx.CAN_TXFP));
 #endif
-	}		
+	}
+
 	if(Status==STATUS_ERR){
         SPRINTF(("Init device failed!\n"));
         return 0;
@@ -222,11 +222,12 @@ int main(void)
     CAN_FilterConfig.MASK_IDE = 0;
     CAN_FilterConfig.MASK_RTR = 0;
     CAN_FilterConfig.MASK_Std_Ext = 0;
-    Status = VCI_SetFilter(VCI_USBCAN2,0,canIndex,&CAN_FilterConfig);
+    Status = VCI_SetFilter(VCI_USBCAN2,0,0,&CAN_FilterConfig);
+
 	for(i=1; i<=13; i++)
 	{
         CAN_FilterConfig.FilterIndex = i;
-        Status = VCI_SetFilter(VCI_USBCAN2,0,canIndex,&CAN_FilterConfig);
+        Status = VCI_SetFilter(VCI_USBCAN2,0,0,&CAN_FilterConfig);
 	}
     if(Status==STATUS_ERR){
         SPRINTF(("Set filter failed!\n"));
@@ -257,6 +258,7 @@ int main(void)
 #endif
     //Start CAN
     Status = VCI_StartCAN(VCI_USBCAN2,0,0);
+
 //	Status = VCI_StartCAN(VCI_USBCAN2,0,1);
     if(Status==STATUS_ERR){
         SPRINTF(("Start CAN failed!\n"));
@@ -284,7 +286,11 @@ int main(void)
 #endif//CAN_MODE_LOOP_BACK
 //        Status = VCI_Transmit(VCI_USBCAN2,0,0,&CAN_SendData[j],1);
 	}
-    Status = VCI_Transmit(VCI_USBCAN2,0,canIndex,CAN_SendData,CAN_DATA_SEND_FRAME_COUNT);
+//	VCI_Transmit(VCI_USBCAN2,devIndex,sendCanIndex,CanTxMsgData,framIndex);
+ //   Status = VCI_Transmit(VCI_USBCAN2,0,0,CAN_SendData,0);
+
+//	while(Status == STATUS_ERR)
+    Status = VCI_Transmit(VCI_USBCAN2,0,0,CAN_SendData,CAN_DATA_SEND_FRAME_COUNT);
     if(Status==STATUS_ERR){
         SPRINTF(("Send CAN data failed!\n"));
         VCI_ResetCAN(VCI_USBCAN2,0,0);
@@ -294,11 +300,12 @@ int main(void)
 #endif//CAN_SEND_DATA
 
 #ifndef OS_LINUX
- //   Sleep(10);
+    Sleep(10);
 #else
 	sleep(0.01);
 #endif
 #if CAN_GET_STATUS
+
             VCI_CAN_STATUS CAN_Status;
             Status = VCI_ReadCANStatus(VCI_USBCAN2, 0, 0, &CAN_Status);
             if (Status == STATUS_ERR)

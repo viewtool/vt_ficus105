@@ -1,25 +1,18 @@
   /*
   ******************************************************************************
-  * @file     : USB_CNT_Counter.cpp
+  * @file     : Ficus_CNT_Counter.cpp
   * @Copyright: ViewTool 
-  * @Revision : ver 1.0
-  * @Date     : 2014/12/29 9:58
-  * @brief    : USB_CNT_Counter demo
+  * @Revision : Ver 1.0
+  * @Date     : 2019/10/23 
+  * @brief    : Ficus_CNT_Counter demo
   ******************************************************************************
   * @attention
   *
-  * Copyright 2009-2014, ViewTool
+  * Copyright 2019-2020, ViewTool
   * http://www.viewtool.com/
   * All Rights Reserved
   * 
   ******************************************************************************
-  */
-  /*
-    Counter Channe 0 - 3
-    0:GPIO_PortA_Pin0
-    1:GPIO_PortA_Pin1
-    2:GPIO_PortA_Pin6
-    3:GPIO_PortB_Pin6
   */
 #ifdef WINAPI
 #include "stdafx.h"
@@ -33,10 +26,6 @@
 int main(int argc, char* argv[])
 {
 	int ret;
-	//Config device
-	CNT_INIT_CONFIG CNTConfig;
-	//Clear counter
-	uint32_t CounterValue[4]={0,0,0,0};	
 	//Scan device
 	ret = CNT_ScanDevice(1);
 	if(ret <= 0){
@@ -49,6 +38,8 @@ int main(int argc, char* argv[])
 		printf("Open device error!\n");
 		return ret;
 	}
+	//Config device
+	CNT_INIT_CONFIG CNTConfig;
 	CNTConfig.CounterBitWide = 32;
 	CNTConfig.CounterMode = 0;
 	CNTConfig.CounterPolarity = 0;
@@ -57,6 +48,8 @@ int main(int argc, char* argv[])
 		printf("Config device error!\n");
 		return ret;
 	}
+	//Clear counter
+	uint32_t CounterValue[4]={0,0,0,0};
 	ret = CNT_SetCounter(CNT_USBCNT,0,CNT_CH0,CounterValue);
 	if(ret != ERR_SUCCESS){
 		printf("Set counter value error!\n");
@@ -74,10 +67,11 @@ int main(int argc, char* argv[])
 		ret = CNT_GetCounter(CNT_USBCNT,0,CNT_CH0,CounterValue);
 		if(ret != ERR_SUCCESS){
 			printf("Get counter value error!\n");
+			break;
 		}else{
 			printf("Counter Value :%d\n",CounterValue[0]);
-		}   
-		Sleep(100);
+		}
+		Sleep(1000);
 	}
 	//Stop counter
 	ret = CNT_StopCounter(CNT_USBCNT,0,CNT_CH0);
