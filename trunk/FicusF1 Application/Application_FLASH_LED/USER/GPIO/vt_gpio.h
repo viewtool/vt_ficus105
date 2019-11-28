@@ -91,6 +91,7 @@ FILE __stdout;
 int _sys_exit(int x) 
 { 
 	x = x; 
+    return 0;
 } 
 
 int fputc(int ch, FILE *f)

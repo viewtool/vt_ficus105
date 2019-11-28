@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ficus_application.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ficus_application.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Oct 22 16:58:50 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 28 16:48:59 2019
 <BR><P>
 <H3>Maximum Stack Usage =         48 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -120,7 +120,9 @@ Global Symbols
 
 <P><STRONG><a name="[62]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[4a]"></a>fputc</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[63]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, main.o(.text), UNUSED)
+
+<P><STRONG><a name="[4a]"></a>fputc</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> printfb.o(i.__0printf$bare)
 </UL>
 <P><STRONG><a name="[47]"></a>main</STRONG> (Thumb, 404 bytes, Stack size 24 bytes, main.o(.text))
@@ -360,14 +362,14 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_cl.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_cl.o(RESET)
 </UL>
-<P><STRONG><a name="[48]"></a>SystemInit</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, system_stm32f10x.o(.text))
+<P><STRONG><a name="[48]"></a>SystemInit</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, system_stm32f10x.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_cl.o(.text)
 </UL>
-<P><STRONG><a name="[63]"></a>SystemCoreClockUpdate</STRONG> (Thumb, 232 bytes, Stack size 20 bytes, system_stm32f10x.o(.text), UNUSED)
+<P><STRONG><a name="[64]"></a>SystemCoreClockUpdate</STRONG> (Thumb, 232 bytes, Stack size 20 bytes, system_stm32f10x.o(.text), UNUSED)
 
 <P><STRONG><a name="[4d]"></a>VGI_ScanDevice</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, vt_gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = VGI_ScanDevice
@@ -387,9 +389,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>VGI_InitGPIO</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, vt_gpio.o(.text), UNUSED)
+<P><STRONG><a name="[65]"></a>VGI_InitGPIO</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, vt_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[65]"></a>VGI_WriteDatas</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, vt_gpio.o(.text), UNUSED)
+<P><STRONG><a name="[66]"></a>VGI_WriteDatas</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, vt_gpio.o(.text), UNUSED)
 
 <P><STRONG><a name="[54]"></a>VGI_ReadDatas</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, vt_gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = VGI_ReadDatas
@@ -427,11 +429,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>_I2C1_EV_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[67]"></a>_I2C1_EV_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[67]"></a>_I2C2_EV_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[68]"></a>_I2C2_EV_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[68]"></a>_TIM6_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[69]"></a>_TIM6_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
 <P><STRONG><a name="[57]"></a>_DMA1_Channel1_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _DMA1_Channel1_IRQHandler
@@ -439,29 +441,29 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[69]"></a>_TIM2_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6a]"></a>_TIM2_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6a]"></a>_TIM3_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6b]"></a>_TIM3_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6b]"></a>_CAN1_RX0_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6c]"></a>_CAN1_RX0_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6c]"></a>_CAN1_RX1_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6d]"></a>_CAN1_RX1_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6d]"></a>_CAN2_RX0_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6e]"></a>_CAN2_RX0_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6e]"></a>_CAN2_RX1_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[6f]"></a>_CAN2_RX1_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[6f]"></a>_TIM4_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[70]"></a>_TIM4_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[70]"></a>_TIM5_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[71]"></a>_TIM5_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[71]"></a>_DMA1_Channel3_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[72]"></a>_DMA1_Channel3_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[72]"></a>_USART1_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[73]"></a>_USART1_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[73]"></a>_USART2_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[74]"></a>_USART2_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
-<P><STRONG><a name="[74]"></a>_USART3_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
+<P><STRONG><a name="[75]"></a>_USART3_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, vt_it.o(.text), UNUSED)
 
 <P><STRONG><a name="[4c]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -469,23 +471,23 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[75]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[76]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[5b]"></a>__0printf$bare</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[76]"></a>__1printf$bare</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
+<P><STRONG><a name="[77]"></a>__1printf$bare</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
 
 <P><STRONG><a name="[4e]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare))
 <BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[77]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[78]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[78]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[79]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[79]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[7a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 <P>
 <H3>
 Local Symbols

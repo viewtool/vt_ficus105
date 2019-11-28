@@ -30,11 +30,101 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32fxxx_it.h"
 #include <string.h>
-extern void _DMA2_Stream0_IRQHandler(void);
+
 /******************************************************************************/
 /*             Cortex-M Processor Exceptions Handlers                         */
 /******************************************************************************/
+extern void _I2C1_EV_IRQHandler(void);
+extern void _I2C2_EV_IRQHandler(void);
+extern void _CAN1_RX0_IRQHandler(void);
+extern void _CAN1_RX1_IRQHandler(void);
+extern void _CAN2_RX0_IRQHandler(void);
+extern void _CAN2_RX1_IRQHandler(void);
+extern void _TIM2_IRQHandler(void);
+extern void _TIM3_IRQHandler(void);
+extern void _TIM4_IRQHandler(void);
+extern void _TIM5_IRQHandler(void);
+extern void _TIM6_IRQHandler(void);
+extern void _DMA1_Channel1_IRQHandler(void);
+extern void _DMA1_Channel3_IRQHandler(void);
+extern void _USART1_IRQHandler(void);
+extern void _USART2_IRQHandler(void);
+extern void _USART3_IRQHandler(void);
 
+void I2C1_EV_IRQHandler(void)
+{
+    _I2C1_EV_IRQHandler();
+}
+
+void I2C2_EV_IRQHandler(void)
+{
+    _I2C2_EV_IRQHandler();
+}
+
+void CAN1_RX0_IRQHandler(void)
+{
+    _CAN1_RX0_IRQHandler();
+}
+
+void CAN1_RX1_IRQHandler(void)
+{
+    _CAN1_RX1_IRQHandler();
+}
+
+void CAN2_RX0_IRQHandler(void)
+{
+    _CAN2_RX0_IRQHandler();
+}
+
+void CAN2_RX1_IRQHandler(void)
+{
+    _CAN2_RX1_IRQHandler();
+}
+
+void TIM2_IRQHandler(void)
+{
+    _TIM2_IRQHandler();
+}
+void TIM3_IRQHandler(void)
+{
+    _TIM3_IRQHandler();
+}
+
+void TIM4_IRQHandler(void)
+{
+    _TIM4_IRQHandler();
+}
+
+void TIM5_IRQHandler(void)
+{
+    _TIM5_IRQHandler();
+}
+
+void TIM6_IRQHandler(void)
+{
+    _TIM6_IRQHandler();
+}
+
+void DMA1_Channel1_IRQHandler(void)
+{
+   _DMA1_Channel1_IRQHandler();
+}
+void DMA1_Channel3_IRQHandler(void)
+{
+   _DMA1_Channel3_IRQHandler();
+}
+void USART1_IRQHandler(void)
+{
+    _USART1_IRQHandler();
+}
+void USART2_IRQHandler(void)
+{
+    _USART2_IRQHandler();
+}
+void USART3_IRQHandler(void)
+{
+    _USART3_IRQHandler();
+}
 /**
   * @brief   This function handles NMI exception.
   * @param  None
@@ -132,95 +222,4 @@ void SysTick_Handler(void)
 {
    
 }
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void DMA2_Stream0_IRQHandler(void)
-{
-    
-}
-/**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
-void TIM1_CC_IRQHandler(void)
-{
-    
-}
-/**
-  * @brief  TIM定时器超时中断处理函数
-  * @param  None
-  * @retval None
-  */
-extern void _TIM2_IRQHandler(void);
-extern void _TIM3_IRQHandler(void);
-extern void _TIM4_IRQHandler(void);
-extern void _TIM5_IRQHandler(void);
-extern void _TIM6_IRQHandler(void);
-extern void _CAN1_RX0_IRQHandler(void);
-extern void _CAN1_RX1_IRQHandler(void);
-extern void _CAN2_RX0_IRQHandler(void);
-extern void _CAN2_RX1_IRQHandler(void);
-extern void _I2C1_EV_IRQHandler(void);
-extern void _I2C2_EV_IRQHandler(void);
-extern void _DMA1_Channel3_IRQHandler(void);
-void TIM2_IRQHandler(void)
-{
-    _TIM2_IRQHandler();
-}
-/**
-  * @brief  TIM定时器超时中断处理函数
-  * @param  None
-  * @retval None
-  */
-void TIM3_IRQHandler(void)
-{
-     _TIM3_IRQHandler();
-}
-void TIM4_IRQHandler(void)
-{
-     _TIM4_IRQHandler();
-}
-void TIM5_IRQHandler(void)
-{
-     _TIM5_IRQHandler();
-}
-void TIM6_IRQHandler(void)
-{
-     _TIM6_IRQHandler();
-}
-void CAN1_RX0_IRQHandler(void)
-{
-    _CAN1_RX0_IRQHandler();
-}
-void CAN1_RX1_IRQHandler(void)
-{
-    _CAN1_RX1_IRQHandler();
-}
-
-void CAN2_RX0_IRQHandler(void)
-{
-    _CAN2_RX0_IRQHandler();   
-}
-
-void CAN2_RX1_IRQHandler(void)
-{
-    _CAN2_RX1_IRQHandler();
-}
-void I2C1_EV_IRQHandler(void)
-{
-    _I2C1_EV_IRQHandler();
-}
-void I2C2_EV_IRQHandler(void)
-{
-    _I2C2_EV_IRQHandler();
-}   
-void DMA1_Channel3_IRQHandler(void)
-{
-    _DMA1_Channel3_IRQHandler();
-}     
-
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
