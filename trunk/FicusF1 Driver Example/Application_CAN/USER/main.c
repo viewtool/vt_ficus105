@@ -40,7 +40,7 @@
 
 #define CAN_DATA_SEND_FRAME_COUNT 10
 /*
-Used for Hardware (CLK=42MHz):
+Used for Hardware (CLK=36MHz):
 
 */
 CAN_BaudRate  CAN_BaudRateInitTab[]= {     

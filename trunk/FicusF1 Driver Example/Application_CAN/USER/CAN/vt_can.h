@@ -34,8 +34,8 @@
 
 
 //Function return status
-#define	STATUS_OK					0
-#define STATUS_ERR					1
+#define	STATUS_OK					1
+#define STATUS_ERR					0
 //1.Compatible with other CAN adapter data type
 
 #define SWD_Debug   0
