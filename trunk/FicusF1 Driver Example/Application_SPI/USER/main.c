@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	}
 	// Device initialization
 	SPI_Init.ClockSpeed = 1125000;
-	SPI_Init.ControlMode = 1;
+	SPI_Init.ControlMode = 0;
 	SPI_Init.CPHA = 0;
 	SPI_Init.CPOL = 0;
 	SPI_Init.LSBFirst = 0;
