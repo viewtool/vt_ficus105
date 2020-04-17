@@ -254,8 +254,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\VTLIB\ficus_f1_dll.lib</PathWithFileName>
-      <FilenameWithoutPath>ficus_f1_dll.lib</FilenameWithoutPath>
+      <PathWithFileName>..\VTLIB\FicusF1.lib</PathWithFileName>
+      <FilenameWithoutPath>FicusF1.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
