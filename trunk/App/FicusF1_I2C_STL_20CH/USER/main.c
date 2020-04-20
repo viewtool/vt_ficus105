@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     I2C_Config.ControlMode = VII_SCTL_MODE;
     I2C_Config.MasterMode = VII_MASTER;
     I2C_Config.SubAddrWidth = VII_SUB_ADDR_1BYTE;
-    ret = VII_InitI2C(VII_USBI2C, 0,J18_P2_P4_I2C_STL_CH0, &I2C_Config);
+    ret = VII_InitI2C(VII_USBI2C, 0,J28_P2_P4_I2C_STL_CH0, &I2C_Config);
     if (ret != ERR_SUCCESS)
     {
         printf("Initialize device error!\r\n");
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
     I2C_TimeConfig.tSU_DAT = 1;
     I2C_TimeConfig.tSU_STO = 4;
     I2C_TimeConfig.tBuf = 5;  
-    ret = VII_TimeConfig(VII_USBI2C, 0, J18_P2_P4_I2C_STL_CH0, &I2C_TimeConfig);
+    ret = VII_TimeConfig(VII_USBI2C, 0, J28_P2_P4_I2C_STL_CH0, &I2C_TimeConfig);
     if (ret != ERR_SUCCESS)
     {
         printf("Set time error!\r\n");
@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
     {
         write_buffer[i] = i;
     }
-    ret = VII_WriteBytes(VII_USBI2C, 0, J18_P2_P4_I2C_STL_CH0, 0xA0, 0x00, write_buffer, 8);
+    ret = VII_WriteBytes(VII_USBI2C, 0, J28_P2_P4_I2C_STL_CH0, 0xA0, 0x00, write_buffer, 8);
     if (ret != ERR_SUCCESS)
     {
         printf("Write data error!\r\n");
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
     //Delay
     Sleep(10);
     //Read 8 byte data from 0x00
-    ret = VII_ReadBytes(VII_USBI2C, 0, J18_P2_P4_I2C_STL_CH0, 0xA0, 0x00, read_buffer, 8);
+    ret = VII_ReadBytes(VII_USBI2C, 0, J28_P2_P4_I2C_STL_CH0, 0xA0, 0x00, read_buffer, 8);
     if (ret != ERR_SUCCESS)
     {
         printf("Read data error!\r\n");
