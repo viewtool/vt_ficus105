@@ -20,6 +20,7 @@
 #else
 #include "stm32f10x_conf.h"
 #include "vt_i2c.h"
+#include "func_map.h"
 #endif
 int main(int argc, char* argv[])
 {

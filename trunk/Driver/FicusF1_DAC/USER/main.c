@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include "stm32f10x_conf.h"
 #include "vt_dac.h"
-
+#include "func_map.h"
 #endif
 int main(int argc, char* argv[])
 {
