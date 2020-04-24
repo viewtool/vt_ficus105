@@ -34,96 +34,96 @@
 /******************************************************************************/
 /*             Cortex-M Processor Exceptions Handlers                         */
 /******************************************************************************/
-extern void _I2C1_EV_IRQHandler(void);
-extern void _I2C2_EV_IRQHandler(void);
-extern void _CAN1_RX0_IRQHandler(void);
-extern void _CAN1_RX1_IRQHandler(void);
-extern void _CAN2_RX0_IRQHandler(void);
-extern void _CAN2_RX1_IRQHandler(void);
-extern void _TIM2_IRQHandler(void);
-extern void _TIM3_IRQHandler(void);
-extern void _TIM4_IRQHandler(void);
-extern void _TIM5_IRQHandler(void);
-extern void _TIM6_IRQHandler(void);
-extern void _DMA1_Channel1_IRQHandler(void);
-extern void _DMA1_Channel3_IRQHandler(void);
-extern void _USART1_IRQHandler(void);
-extern void _USART2_IRQHandler(void);
-extern void _USART3_IRQHandler(void);
+extern void I2C1_EV_IRQ_Handler(void);
+extern void I2C2_EV_IRQ_Handler(void);
+extern void CAN1_RX0_IRQ_Handler(void);
+extern void CAN1_RX1_IRQ_Handler(void);
+extern void CAN2_RX0_IRQ_Handler(void);
+extern void CAN2_RX1_IRQ_Handler(void);
+extern void TIM2_IRQ_Handler(void);
+extern void TIM3_IRQ_Handler(void);
+extern void TIM4_IRQ_Handler(void);
+extern void TIM5_IRQ_Handler(void);
+extern void TIM6_IRQ_Handler(void);
+extern void DMA1_Channel1_IRQ_Handler(void);
+extern void DMA1_Channel3_IRQ_Handler(void);
+extern void USART1_IRQ_Handler(void);
+extern void USART2_IRQ_Handler(void);
+extern void USART3_IRQ_Handler(void);
 
 void I2C1_EV_IRQHandler(void)
 {
-    _I2C1_EV_IRQHandler();
+    I2C1_EV_IRQ_Handler();
 }
 
 void I2C2_EV_IRQHandler(void)
 {
-    _I2C2_EV_IRQHandler();
+    I2C2_EV_IRQ_Handler();
 }
 
 void CAN1_RX0_IRQHandler(void)
 {
-    _CAN1_RX0_IRQHandler();
+    CAN1_RX0_IRQ_Handler();
 }
 
 void CAN1_RX1_IRQHandler(void)
 {
-    _CAN1_RX1_IRQHandler();
+    CAN1_RX1_IRQ_Handler();
 }
 
 void CAN2_RX0_IRQHandler(void)
 {
-    _CAN2_RX0_IRQHandler();
+    CAN2_RX0_IRQ_Handler();
 }
 
 void CAN2_RX1_IRQHandler(void)
 {
-    _CAN2_RX1_IRQHandler();
+    CAN2_RX1_IRQ_Handler();
 }
 
 void TIM2_IRQHandler(void)
 {
-    _TIM2_IRQHandler();
+    TIM2_IRQ_Handler();
 }
 void TIM3_IRQHandler(void)
 {
-    _TIM3_IRQHandler();
+    TIM3_IRQ_Handler();
 }
 
 void TIM4_IRQHandler(void)
 {
-    _TIM4_IRQHandler();
+    TIM4_IRQ_Handler();
 }
 
 void TIM5_IRQHandler(void)
 {
-    _TIM5_IRQHandler();
+    TIM5_IRQ_Handler();
 }
 
 void TIM6_IRQHandler(void)
 {
-    _TIM6_IRQHandler();
+    TIM6_IRQ_Handler();
 }
 
 void DMA1_Channel1_IRQHandler(void)
 {
-   _DMA1_Channel1_IRQHandler();
+   DMA1_Channel1_IRQ_Handler();
 }
 void DMA1_Channel3_IRQHandler(void)
 {
-   _DMA1_Channel3_IRQHandler();
+   DMA1_Channel3_IRQ_Handler();
 }
 void USART1_IRQHandler(void)
 {
-    _USART1_IRQHandler();
+    USART1_IRQ_Handler();
 }
 void USART2_IRQHandler(void)
 {
-    _USART2_IRQHandler();
+    USART2_IRQ_Handler();
 }
 void USART3_IRQHandler(void)
 {
-    _USART3_IRQHandler();
+    USART3_IRQ_Handler();
 }
 /**
   * @brief   This function handles NMI exception.
