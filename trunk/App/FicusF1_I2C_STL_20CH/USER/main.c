@@ -98,66 +98,6 @@ int main(int argc, char* argv[])
         printf("\r\n");
 //		Sleep(1);
     }
-    //Initializes the device
-    for(j=1;j<20;j++)
-    {
-        I2C_Config.AddrType = VII_ADDR_7BIT;
-        I2C_Config.ClockSpeed = 400000;
-        I2C_Config.ControlMode = VII_SCTL_MODE;
-        I2C_Config.MasterMode = VII_MASTER;
-        I2C_Config.SubAddrWidth = VII_SUB_ADDR_1BYTE;
-        ret = VII_InitI2C(VII_USBI2C, 0,j, &I2C_Config);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Initialize device error!\r\n");
-            return ret;
-        }
-        //Config timing,Unit of time for microseconds
-        I2C_TimeConfig.tSU_STA = 5;
-        I2C_TimeConfig.tHD_STA = 4;
-        I2C_TimeConfig.tLOW = 5; 
-        I2C_TimeConfig.tHIGH = 5;
-        I2C_TimeConfig.tSU_DAT = 1;
-        I2C_TimeConfig.tSU_STO = 4;
-        I2C_TimeConfig.tBuf = 5;  
-        ret = VII_TimeConfig(VII_USBI2C, 0, j, &I2C_TimeConfig);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set time error!\r\n");
-            return ret;
-        }
-        //Write 8 byte data to 0x00
-        for (i = 0; i < 8; i++)
-        {
-            write_buffer[i] = i;
-        }
-        ret = VII_WriteBytes(VII_USBI2C, 0, j, 0xA0, 0x00, write_buffer, 8);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Write data error!\r\n");
-            return ret;
-        }
-        //Delay
-        Sleep(10);
-        //Read 8 byte data from 0x00
-        ret = VII_ReadBytes(VII_USBI2C, 0, j, 0xA0, 0x00, read_buffer, 8);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Read data error!\r\n");
-            return ret;
-        }
-        else
-        {
-            printf("Read Data:\r\n");
-            for(i=0;i<8;i++)
-            {
-                printf("%02X ",read_buffer[i]);
-            }	
-            printf("\r\n");
-    //		Sleep(1);
-        }   
-    }
-
 	return 0;
 }
 

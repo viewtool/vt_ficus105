@@ -130,6 +130,19 @@ typedef struct _VSI_INIT_CONFIG{
 	uint32_t	ClockSpeed;		
 }VSI_INIT_CONFIG,*PVSI_INIT_CONFIG;
 
+typedef struct _VSI_INIT_CONFIGEX{
+    uint8_t     SPI_Index;
+    uint8_t     ControlMode;		///< Control mode, 0-full duplex hardware control, 1-half duplex hardware control, 2-half duplex software control, 3-single bus mode, data input and output are MOSI
+    uint8_t     TranBits;			///< Data transmission bit width, 8- data width is 8bit, 16- data transmission width is 16bit
+    uint8_t     MasterMode;			///< Master and slave selection, 0- slave, 1- host
+    uint8_t     CPOL;				///< Clock polarity. 0- clock signal is low when idle, and 1- clock signal is high when idle
+    uint8_t     CPHA;				///< Clock phase, 0- first clock edge sampling data, 1- second clock edge sampling data
+    uint8_t     LSBFirst;			///< Data transmission direction: 0- send high bit data first, 1- send low bit data first
+    uint8_t     SelPolarity;		///< Select output polarity, 0- effective chip selection output for low level, 1- effective chip selection output for high level
+	uint32_t	ClockSpeed;			///< The clock output frequency, the hardware control mode in the 36000000180000, 0900000450000, 2250000112000562, 500281, 250 a few optional in frequency, the software control mode can be set to any value between 100000 to 1000000 
+}VSI_INIT_CONFIGEX,*PVSI_INIT_CONFIGEX;
+
+
 typedef struct _VSI_FLASH_INIT_CONFIG
 {
 	uint32_t	page_size;
@@ -152,7 +165,8 @@ extern int32_t VSI_ScanDevice(uint8_t NeedInit);
 extern int32_t VSI_OpenDevice(int32_t DevType,int32_t DevIndex,int32_t Reserved);
 extern int32_t VSI_CloseDevice(int32_t DevType,int32_t DevIndex);
 
-extern int32_t VSI_InitSPI(int32_t DevType, int32_t DevIndex,int32_t SPI_Index, PVSI_INIT_CONFIG pInitConfig);
+extern int32_t VSI_InitSPI(int32_t DevType, int32_t DevIndex, PVSI_INIT_CONFIG pInitConfig);
+extern int32_t VSI_InitSPIEx(int32_t DevType, int32_t DevIndex, PVSI_INIT_CONFIGEX pInitConfigEx);
 extern int32_t VSI_WriteBytes(int32_t DevType,int32_t DevIndex,int32_t SPIIndex,uint8_t *pWriteData,uint16_t Len);
 extern int32_t VSI_ReadBytes(int32_t DevType,int32_t DevIndex,int32_t SPIIndex,uint8_t *pReadData,uint16_t Len);
 extern int32_t VSI_WriteReadBytes(int32_t DevType,int32_t DevIndex,int32_t SPIIndex,uint8_t* pWriteData,
