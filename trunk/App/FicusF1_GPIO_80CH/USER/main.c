@@ -23,7 +23,7 @@
 #include "vt_gpio.h"
 #include "func_map.h"
 #endif
-uint32_t num[]={
+uint32_t gpio[]={
 J15_P1_GPIO,J15_P2_GPIO,J15_P3_GPIO,J15_P4_GPIO,
 J15_P5_GPIO,J15_P6_GPIO,J15_P7_GPIO,J15_P8_GPIO,
 J15_P9_GPIO,J15_P10_GPIO,J15_P11_GPIO,
@@ -117,107 +117,105 @@ int main(int argc, char* argv[])
         printf("Open device error!\r\n");
         return ret;
     }
-    for(j=0;j<sizeof(num)-1;j++)
+    // Set GPIOA_0 and GPIOA_1 to output 
+    ret = VGI_SetOutputEx(VGI_USBGPIO, 0, J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
     {
-        // Set GPIOA_0 and GPIOA_1 to output 
-        ret = VGI_SetOutputEx(VGI_USBGPIO, 0, num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin output error!\r\n");
-            return ret;
-        }
-        // Set GPIOA_0 and GPIOA_1 
-        ret = VGI_SetPinsEx(VGI_USBGPIO, 0,  num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin high error!\r\n");
-            return ret;
-        }
-        // Reset GPIOA_0 and GPIOA_1 
-        ret = VGI_ResetPinsEx(VGI_USBGPIO, 0, num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin low error!\r\n");
-            return ret;
-        }
-        // Set GPIOA_4 and GPIOA_5 to input 
-        ret = VGI_SetInputEx(VGI_USBGPIO, 0, num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin input error!\r\n");
-            return ret;
-        }
-        // Read GPIOA_4 and GPIOA_5 Data 
-        ret = VGI_ReadDatasEx(VGI_USBGPIO, 0,num[j], &pin_value);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Get pin data error!\r\n");
-            return ret;
-        }
-        else
-        {
-            if ((pin_value & num[j]) != 0)
-            {
-                printf("GPIO is high-level!\r\n");
-            }
-            else
-            {
-                printf("GPIO is low-level!\r\n");
-            }
-            if ((pin_value & num[j]) != 0)
-            {
-                printf("GPIO is high-level!\r\n");
-            }
-            else
-            {
-                printf("GPIO is low-level!\r\n");
-            }
-        }
-        ret = VGI_SetOpenDrain(VGI_USBGPIO, 0, num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin open drain error!\r\n");
-            return ret;
-        }
-        
-        ret = VGI_SetPins(VGI_USBGPIO, 0,num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin high error!\r\n");
-            return ret;
-        }
-        ret = VGI_ResetPins(VGI_USBGPIO, 0, num[j]);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Set pin high error!\r\n");
-            return ret;
-        }
-        ret = VGI_ReadDatas(VGI_USBGPIO, 0,num[j], &pin_value);
-        if (ret != ERR_SUCCESS)
-        {
-            printf("Get pin data error!\r\n");
-            return ret;
-        }
-        else
-        {
-            if ((pin_value & num[j]) != 0)
-            {
-                printf("GPIO is high-level!\r\n");
-            }
-            else
-            {
-                printf("GPIO is low-level!\r\n");
-            }
-            if ((pin_value & num[j]) != 0)
-            {
-                printf("GPIO is high-level!\r\n");
-            }
-            else
-            {
-                printf("GPIO is low-level!\r\n");
-            }
-        }    
+        printf("Set pin output error!\r\n");
+        return ret;
     }
+    // Set GPIOA_0 and GPIOA_1 
+    ret = VGI_SetPinsEx(VGI_USBGPIO, 0,  J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin high error!\r\n");
+        return ret;
+    }
+    // Reset GPIOA_0 and GPIOA_1 
+    ret = VGI_ResetPinsEx(VGI_USBGPIO, 0, J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin low error!\r\n");
+        return ret;
+    }
+    ret = VGI_SetOpenDrainEx(VGI_USBGPIO, 0, J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin open drain error!\r\n");
+        return ret;
+    }
+    
+    ret = VGI_SetPinsEx(VGI_USBGPIO, 0,J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin high error!\r\n");
+        return ret;
+    }
+    ret = VGI_ResetPinsEx(VGI_USBGPIO, 0, J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin high error!\r\n");
+        return ret;
+    }
+    ret = VGI_ReadDatasEx(VGI_USBGPIO, 0,J2_P1_GPIO, &pin_value);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Get pin data error!\r\n");
+        return ret;
+    }
+    else
+    {
+        if ((pin_value & J2_P1_GPIO) != 0)
+        {
+            printf("GPIO is high-level!\r\n");
+        }
+        else
+        {
+            printf("GPIO is low-level!\r\n");
+        }
+        if ((pin_value & J2_P1_GPIO) != 0)
+        {
+            printf("GPIO is high-level!\r\n");
+        }
+        else
+        {
+            printf("GPIO is low-level!\r\n");
+        }
+    }    
+    // Set GPIOA_4 and GPIOA_5 to input 
+    ret = VGI_SetInputEx(VGI_USBGPIO, 0, J2_P1_GPIO);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Set pin input error!\r\n");
+        return ret;
+    }
+    // Read GPIOA_4 and GPIOA_5 Data 
+    ret = VGI_ReadDatasEx(VGI_USBGPIO, 0,J2_P1_GPIO, &pin_value);
+    if (ret != ERR_SUCCESS)
+    {
+        printf("Get pin data error!\r\n");
+        return ret;
+    }
+    else
+    {
+        if ((pin_value & J2_P1_GPIO) != 0)
+        {
+            printf("GPIO is high-level!\r\n");
+        }
+        else
+        {
+            printf("GPIO is low-level!\r\n");
+        }
+        if ((pin_value & J2_P1_GPIO) != 0)
+        {
+            printf("GPIO is high-level!\r\n");
+        }
+        else
+        {
+            printf("GPIO is low-level!\r\n");
+        }
+    }
+
     //Close Device 
     ret = VGI_CloseDevice(VGI_USBGPIO, 0);
     if (ret != ERR_SUCCESS)

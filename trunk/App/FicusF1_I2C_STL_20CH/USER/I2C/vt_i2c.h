@@ -67,7 +67,7 @@
 #define VII_SUB_ADDR_4BYTE	(4)		//4Byte sub-address
 
 
-#define SWD_Debug   1
+#define SWD_Debug   0
 
 #if SWD_Debug
 #define ITM_Port8(n)    (*((volatile unsigned char *)(0xE0000000+4*n)))
@@ -108,8 +108,8 @@ _sys_exit(int x)
 
 int fputc(int ch, FILE *f)
 { 	
-	while((USART1->SR&0X40)==0);
-	USART1->DR = (u8) ch;      
+	while((USART2->SR&0X40)==0);
+	USART2->DR = (u8) ch;      
 	return ch;
 }
 #endif
